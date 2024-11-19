@@ -17,7 +17,7 @@ export default class Home extends Component {
             auth
               .signOut()
               .then(() => {
-                this.props.navigation.navigate("Register");
+                this.props.navigation.navigate("Login");
               })
               .catch((error) =>
                 console.error("Error al cerrar sesión:", error)

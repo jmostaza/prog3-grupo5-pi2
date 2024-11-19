@@ -20,7 +20,7 @@ export default class Register extends Component {
     componentDidMount(){
         auth.onAuthStateChanged(user=> {
             if(user){
-                this.props.navigation.navigate('HomeMenu') // machi cambialo a Login cuando hagas esta parte !!
+                this.props.navigation.navigate('HomeMenu') 
             }
         })
     }
@@ -83,7 +83,7 @@ export default class Register extends Component {
             })
             
         })
-        .then(()=> this.props.navigation.navigate('HomeMenu')) //modificar a login
+        .then(()=> this.props.navigation.navigate('Login')) 
         .catch((error)=> {
             console.log(error);
             this.setState({error: error.message })
@@ -91,7 +91,6 @@ export default class Register extends Component {
     }
         
     }
-    
   render() {
     return (
       <View style={styles.container}>
