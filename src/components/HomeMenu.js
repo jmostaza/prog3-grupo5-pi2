@@ -4,6 +4,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Entypo from "@expo/vector-icons/Entypo";
+import NewPost from "../screens/NewPost";
 
 
 const Tab = createBottomTabNavigator();
@@ -15,6 +16,13 @@ const HomeMenu = () => {
         component={Home}
         options={{
           tabBarIcon: () => <Entypo name="home" size={24} color="black" />
+        }}
+      />
+      <Tab.Screen
+        name="NewPost"
+        component={NewPost}
+        options={{
+          tabBarIcon: () => <FontAwesome name="plus-square-o" size={24} color="black" />
         }}
       />
     </Tab.Navigator>
