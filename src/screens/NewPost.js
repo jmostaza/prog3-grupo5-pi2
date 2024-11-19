@@ -24,8 +24,8 @@ export default class NewPost extends Component {
         db.collection("posts").add({
             email: auth.currentUser.email,
             post: this.state.post,
-            createdAt: Date.now()
-            // agregar lo del like
+            createdAt: Date.now(),
+            likes:[] 
         })
             .then(() => {
                 console.log("Se agregó el post exitosamente")

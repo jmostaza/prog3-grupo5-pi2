@@ -36,9 +36,10 @@ export default class Home extends Component {
         :(<FlatList
         data= {this.state.posts}
         keyExtractor={item => item.id}
-        renderItem={({item})=> <Posts postInfo={item}/>}
-        />)
-        }
+        renderItem={({ item }) => {
+          console.log("Item en renderItem:", item); 
+          return <Posts postInfo={item} />;
+        }} />)}
       </View>
     )
   }
