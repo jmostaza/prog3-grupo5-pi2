@@ -28,7 +28,6 @@ export default class NewPost extends Component {
             likes:[]
         })
             .then(() => {
-                console.log("Se agregó el post exitosamente")
                 this.props.navigation.navigate("Home")
             })
             .catch(error => {

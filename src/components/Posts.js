@@ -13,10 +13,16 @@ export default class Posts extends Component {
     };
   }
   componentDidMount() {
-    
-    if (this.props.postInfo.data.likes.includes(auth.currentUser.email)) {
+    const currentUser  = auth.currentUser ;
+    if (currentUser && this.props.postInfo.data.likes.includes(auth.currentUser.email)) {
       this.setState({
         liked: true,
+        cantLikes: this.props.postInfo.data.likes.length,
+      });
+    }
+    else{
+      this.setState({
+        liked: false,
         cantLikes: this.props.postInfo.data.likes.length,
       });
     }

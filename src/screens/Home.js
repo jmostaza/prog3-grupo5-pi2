@@ -22,7 +22,7 @@ export default class Home extends Component {
           data: doc.data(),
         });
       });
-      this.setState({ posts: posts }, () => console.log(this.state.posts));
+      this.setState({ posts: posts });
     });
   }
 
@@ -45,9 +45,7 @@ export default class Home extends Component {
               .then(() => {
                 this.props.navigation.navigate("Register");
               })
-              .catch((error) =>
-                console.error("Error al cerrar sesión:", error)
-              );
+              .catch((error));
           }}>
           <Text style={styles.logoutText} >Cerrar sesión</Text>
         </TouchableOpacity>

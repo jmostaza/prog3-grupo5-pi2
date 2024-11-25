@@ -84,7 +84,6 @@ export default class Login extends Component {
           return;
         })
         .catch((error) => {
-          console.log(error);
           this.setState({ errorEmail: "", errorPassword: "Falla en el login" });
         });
     }

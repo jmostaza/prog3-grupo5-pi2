@@ -20,7 +20,6 @@ export default class Profile extends Component {
           data: doc.data(),
         })
       })
-      console.log(posts);
       this.setState({
         postUsuario: posts
       })
@@ -33,7 +32,6 @@ export default class Profile extends Component {
           data: doc.data(),
         })
       })
-      console.log('useeer',users[0]);
       this.setState({
         userName : users[0].data.userName
       })
@@ -44,13 +42,10 @@ export default class Profile extends Component {
     auth.signOut().then(this.props.navigation.navigate("Login"));
   }
   deletePost(postId) {
-    console.log("Intentando eliminar post con ID:", postId);
     db.collection("posts")
       .doc(postId)
       .delete()
       .then(() => {
-        console.log("Post eliminado con éxito");
-
         this.setState({
           postUsuario: this.state.postUsuario.filter(post => post.id !== postId)
         });
@@ -60,7 +55,6 @@ export default class Profile extends Component {
       });
   }
   render() {
-    console.log("Estado actual de postUsuario:", this.state.postUsuario);
     return (
       <View style={styles.container}>
          <Text style={styles.title}> Usuario: {this.state.userName}</Text>

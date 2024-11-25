@@ -6,6 +6,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Entypo from "@expo/vector-icons/Entypo";
 import NewPost from "../screens/NewPost";
 import Profile from '../screens/Profile'
+import SearchResults from "../screens/SearchResults";
 
 
 const Tab = createBottomTabNavigator();
@@ -32,6 +33,14 @@ const HomeMenu = () => {
         options={{
           tabBarIcon: () => (
             <Ionicons name="person-circle" size={24} color="black" />)
+        }}
+      />
+      <Tab.Screen
+        name="SearchResults"
+        component={SearchResults}
+        options={{
+          tabBarIcon: () => (
+            <AntDesign name="search1" size={24} color="black" />)
         }}
       />
     </Tab.Navigator>
