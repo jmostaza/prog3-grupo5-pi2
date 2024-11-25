@@ -14,6 +14,11 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+    auth.onAuthStateChanged(user=> {
+      if(!user){
+          this.props.navigation.navigate('Login') 
+      }
+  })
     db.collection('posts').orderBy("createdAt", "desc").onSnapshot((docs) => {
       let posts = [];
       docs.forEach((doc) => {

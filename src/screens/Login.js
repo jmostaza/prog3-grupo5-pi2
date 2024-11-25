@@ -40,10 +40,10 @@ export default class Login extends Component {
     const { email } = this.state;
 
     if (email === "") {
-      this.setState({ errorEmail: "El campo de email no puede estar vacío." });
+      this.setState({ errorEmail: "Email field cannot be empty" });
       return false;
     } else if (!this.validateEmail(email)) {
-      this.setState({ errorEmail: "Email mal formateado, falta el @" });
+      this.setState({ errorEmail: "Incorrectly formatted email, missing @" });
       return false;
     } else {
       this.setState({ errorEmail: "" });
@@ -55,13 +55,13 @@ export default class Login extends Component {
     const { password } = this.state;
     if (password === "") {
       this.setState({
-        errorPassword: "El campo de contraseña no puede estar vacio.",
+        errorPassword: "Password field cannot be empty",
       });
       return false;
     } else if (!this.validatePassword(password)) {
       this.setState({
         errorPassword:
-          "La contraseña debe tener una longitud mínima de 6 caracteres",
+          "The password must be more than 6 digits",
       });
       return false;
     } else {
@@ -84,7 +84,7 @@ export default class Login extends Component {
           return;
         })
         .catch((error) => {
-          this.setState({ errorEmail: "", errorPassword: "Falla en el login" });
+          this.setState({ errorEmail: "", errorPassword: "Login failed" });
         });
     }
   }

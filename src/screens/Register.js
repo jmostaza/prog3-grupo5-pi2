@@ -40,10 +40,10 @@ export default class Register extends Component {
         const { email } = this.state;
 
         if(email === '') {
-            this.setState({ errorEmail: 'El campo de email no puede estar vacío.' })
+            this.setState({ errorEmail: 'Email field cannot be empty' })
             return false;
         } else if(!this.validateEmail(email)) {
-            this.setState({ errorEmail: 'Email mal formateado, falta el @' })
+            this.setState({ errorEmail: 'Incorrectly formatted email, missing @' })
             return false;
         } else {
             this.setState({ errorEmail: '' })
@@ -55,10 +55,10 @@ export default class Register extends Component {
         const { password } = this.state;
 
         if(password === '') {
-            this.setState({ errorPassword: 'El campo de contraseña no puede estar vacio.' })
+            this.setState({ errorPassword: 'Password field cannot be empty' })
             return false;
         } else if(!this.validatePassword(password)) {
-            this.setState({ errorPassword: 'La contraseña debe tener una longitud mínima de 6 caracteres' })
+            this.setState({ errorPassword: 'The password must be more than 6 digits' })
             return false;
         } else {
             this.setState({ errorPassword: '' })
@@ -120,7 +120,9 @@ export default class Register extends Component {
             <Text style={styles.errorText}>{this.state.errorPassword}</Text> 
                 : null}
        
-       <TouchableOpacity style={styles.button} disabled={!this.isFormValid()} onPress={()=> this.onSubmit()}> 
+       <TouchableOpacity 
+        style={!this.isFormValid() ? styles.button2 : styles.button}
+        disabled={!this.isFormValid()} onPress={()=> this.onSubmit()}> 
             <Text style={styles.buttonText} >Registrarme</Text>
        </TouchableOpacity>
        <TouchableOpacity style={styles.button} onPress={()=> this.props.navigation.navigate('Login')}>
@@ -173,6 +175,17 @@ const styles = StyleSheet.create({
         width: "auto",
         alignSelf: "center",
       },
+      button2: {
+        backgroundColor: "#89A3C9",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 6,
+        marginTop: 15,
+        alignItems: "center",
+        justifyContent: "center",
+        width: "auto",
+        alignSelf: "center",
+      },
       buttonText: {
         color: "#EEEEEE",
         fontWeight: "bold",
@@ -185,5 +198,4 @@ const styles = StyleSheet.create({
         fontStyle: "italic",
         fontWeight: "bold"
       },
-     
   });
