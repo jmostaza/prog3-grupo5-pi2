@@ -164,9 +164,10 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: "#B22222",
-    fontSize: 14,
+    fontSize: 15,
     marginBottom: 10,
     fontStyle: "italic",
+    fontWeight: "bold"
   },
   button: {
     backgroundColor: "#4F709C",

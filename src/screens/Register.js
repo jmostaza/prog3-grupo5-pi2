@@ -20,9 +20,9 @@ export default class Register extends Component {
     componentDidMount(){
         auth.onAuthStateChanged(user=> {
             if(user){
-                this.props.navigation.navigate('HomeMenu') 
+                this.props.navigation.navigate('Login') 
             }
-        })
+        }) 
     }
     validateEmail(email) {
         return email.includes('@');
@@ -86,7 +86,7 @@ export default class Register extends Component {
         .then(()=> this.props.navigation.navigate('Login')) 
         .catch((error)=> {
             console.log(error);
-            this.setState({error: error.message })
+            this.setState({error: error.message, errorEmail: error.message })
         })
     }
         
@@ -94,10 +94,8 @@ export default class Register extends Component {
   render() {
     return (
       <View style={styles.container}>
-       <Text style={styles.title}>REGISTER</Text>
-       <TouchableOpacity onPress={()=> this.props.navigation.navigate('Login')}>
-        <Text style={styles.link}>Ya tengo cuenta</Text>
-       </TouchableOpacity>
+       <Text style={styles.title}>Register</Text>
+       <Text style={styles.subtitle}>Estas en el register</Text>
        <TextInput style={styles.input} 
         keyboardType='email-address'
         placeholder='email'
@@ -105,7 +103,7 @@ export default class Register extends Component {
         value={this.state.email}
        />
        {this.state.errorEmail ? 
-            <Text >{this.state.errorEmail}</Text> 
+            <Text  style={styles.errorText} >{this.state.errorEmail}</Text> 
                 : null}
         <TextInput style={styles.input} 
         placeholder='user'
@@ -120,10 +118,14 @@ export default class Register extends Component {
         value={this.state.password}
        />
        {this.state.errorPassword ? 
-            <Text >{this.state.errorPassword}</Text> 
+            <Text style={styles.errorText}>{this.state.errorPassword}</Text> 
                 : null}
-       <TouchableOpacity style={styles.boton} disabled={!this.isFormValid()} onPress={()=> this.onSubmit()}> 
-            <Text style={styles.text} >Registrarme</Text>
+       
+       <TouchableOpacity style={styles.button} disabled={!this.isFormValid()} onPress={()=> this.onSubmit()}> 
+            <Text style={styles.buttonText} >Registrarme</Text>
+       </TouchableOpacity>
+       <TouchableOpacity style={styles.button} onPress={()=> this.props.navigation.navigate('Login')}>
+        <Text style={styles.buttonText}>Ya tengo cuenta</Text>
        </TouchableOpacity>
       </View>
     )
@@ -131,50 +133,58 @@ export default class Register extends Component {
 }
 const styles = StyleSheet.create({
     container: {
-      paddingHorizontal: 10,
-      marginTop: 20,
-      flex:1
-    },
-    input: {
-      height: 20,
-      paddingVertical: 15,
-      paddingHorizontal: 10,
-      borderWidth: 1,
-      borderColor: "#ccc",
-      borderStyle: "solid",
-      borderRadius: 6,
-      marginVertical: 10,
-    },
-    boton: {
-      backgroundColor: "#28a745",
-      paddingHorizontal: 10,
-      paddingVertical: 6,
-      textAlign: "center",
-      borderRadius: 4,
-      borderWidth: 1,
-      borderStyle: "solid",
-      borderColor: "#28a745",
-    },
-    text:{
-      color:"white",
-      textAlign: "center",
-      fontWeight: "bold"
+        flex: 1,
+        justifyContent: "center",
+        paddingHorizontal: 20,
+        backgroundColor: "#303841",
     },
     title: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      marginBottom: 10,
-      color: '#333',
+        fontSize: 28,
+        fontWeight: "bold",
+        marginBottom: 10,
+        color: "#EEEEEE",
+        textAlign: "center",
+      },
+      subtitle: {
+        fontSize: 18,
+        marginBottom: 30,
+        color: "#EEEEEE",
+        textAlign: "center",
+      },
+      input: {
+        height: 50,
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        borderWidth: 1,
+        borderColor: "#4F709C",
+        borderRadius: 8,
+        marginVertical: 10,
+        backgroundColor: "#3A4750",
+        fontSize: 16,
+        color: "#EEEEEE",
+      },
+      button: {
+        backgroundColor: "#4F709C",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 6,
+        marginTop: 15,
+        alignItems: "center",
+        justifyContent: "center",
+        width: "auto",
+        alignSelf: "center",
+      },
+      buttonText: {
+        color: "#EEEEEE",
+        fontWeight: "bold",
+        fontSize: 16,
     },
-    subtitle: {
-      fontSize: 16,
-      marginBottom: 20,
-      color: '#666',
-    },
-    link: {
-      marginTop: 5,
-      color: '#007bff',
-      fontSize: 16,
-      fontStyle: "italic"
-    }
+    errorText: {
+        color: "#B22222",
+        fontSize: 15,
+        marginBottom: 10,
+        fontStyle: "italic",
+        fontWeight: "bold"
+      },
+     
   });

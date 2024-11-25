@@ -25,7 +25,7 @@ export default class NewPost extends Component {
             email: auth.currentUser.email,
             post: this.state.post,
             createdAt: Date.now(),
-            likes:[] 
+            likes:[]
         })
             .then(() => {
                 console.log("Se agregó el post exitosamente")

@@ -9,10 +9,11 @@ export default class Posts extends Component {
     super(props);
     this.state = {
       liked: false,
-      cantLikes: this.props.postInfo.data.likes.length, //EL ERROR ESTA ACA!!
+      cantLikes: this.props.postInfo.data.likes.length, 
     };
   }
   componentDidMount() {
+    
     if (this.props.postInfo.data.likes.includes(auth.currentUser.email)) {
       this.setState({
         liked: true,
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    backgroundColor: "#303841",
+    backgroundColor: "#4B5563",
     margin: 5,
     borderRadius: 10,
   },
